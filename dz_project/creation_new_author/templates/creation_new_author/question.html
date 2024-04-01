@@ -1,0 +1,13 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<h2>Author with name"{{ author_name }}" not found.</h2>
+<p>Would you like to create a new author with a name"{{ author_name }}"?</p>
+<form method="post" action="{% url 'creation_new_author:create_author' %}">
+    {% csrf_token %}
+    <input type="hidden" name="author_name" value="{{ author_name }}">
+    <a href="{% url 'creation_new_author:create_author' %}" class="btn btn-primary">Yes</a>
+    <a href="{% url 'creation_new_author:add_quote' %}" class="btn btn-primary">No</a>
+
+</form>
+{% endblock %}
